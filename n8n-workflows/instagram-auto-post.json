@@ -1,0 +1,142 @@
+{
+  "name": "M&M Auto - Instagram Auto Post",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 72
+            }
+          ]
+        }
+      },
+      "id": "trigger-node",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "sheetId": "={{ $env.MM_GOOGLE_SHEET_ID }}",
+        "range": "A:H",
+        "options": {
+          "valueRenderMode": "FORMATTED_VALUE"
+        }
+      },
+      "id": "google-sheets-node",
+      "name": "Read Content Calendar",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [450, 300],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "google-sheets-cred",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Filter posts for today with Status = 'Pending'\nconst today = new Date().toISOString().split('T')[0];\nconst posts = items[0].json.data || [];\n\nconst todayPosts = posts.filter(post => {\n  const postDate = post.Scheduled_Time?.split(' ')[0];\n  return postDate === today && post.Status === 'Pending';\n});\n\nreturn todayPosts.map(post => ({\n  json: post\n}));"
+      },
+      "id": "code-node",
+      "name": "Filter Today's Posts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "operation": "publish_media_v2",
+        "app": "InstagramBusinessCLIAPI",
+        "media": "={{ $json.Image_File_Name }}",
+        "caption": "={{ $json.Caption }}",
+        "location": "Mississauga"
+      },
+      "id": "zapier-mcp-node",
+      "name": "Post to Instagram",
+      "type": "n8n-nodes-base.mcpClientTool",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "sheetId": "={{ $env.MM_GOOGLE_SHEET_ID }}",
+        "range": "A:H",
+        "keyColumn": "Post_ID",
+        "schema": [
+          {
+            "column": "Status",
+            "value": "Posted"
+          },
+          {
+            "column": "Posted_At",
+            "value": "={{ $now }}"
+          }
+        ]
+      },
+      "id": "update-sheets-node",
+      "name": "Update Status to Posted",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [1050, 300]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Read Content Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Content Calendar": {
+      "main": [
+        [
+          {
+            "node": "Filter Today's Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Today's Posts": {
+      "main": [
+        [
+          {
+            "node": "Post to Instagram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post to Instagram": {
+      "main": [
+        [
+          {
+            "node": "Update Status to Posted",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
