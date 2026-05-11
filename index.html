@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&M Auto Center - Professional Auto Repair Mississauga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        header { background: rgba(10,10,10,0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        .logo { font-size: 28px; font-weight: 800; color: #e63946; }
+        .logo span { color: #fff; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: #e63946; }
+        .cta-nav { background: #e63946; padding: 12px 24px; border-radius: 8px; color: #fff !important; }
+        
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); }
+        .hero-content { max-width: 600px; }
+        .hero h1 { font-size: 64px; font-weight: 800; line-height: 1.1; margin-bottom: 30px; }
+        .hero h1 span { color: #e63946; }
+        .hero p { font-size: 20px; color: #aaa; margin-bottom: 40px; }
+        .cta-button { display: inline-block; background: #e63946; color: #fff; padding: 18px 40px; font-size: 18px; font-weight: 700; border-radius: 12px; text-decoration: none; transition: transform 0.3s; }
+        .cta-button:hover { transform: scale(1.05); }
+        .offer-badge { background: rgba(230,57,70,0.2); border: 1px solid #e63946; padding: 15px 25px; border-radius: 50px; display: inline-block; margin-top: 30px; }
+        .offer-badge strong { color: #e63946; }
+        
+        .stats { padding: 80px 0; background: #111; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
+        .stat-item { padding: 40px; }
+        .stat-number { font-size: 48px; font-weight: 800; color: #e63946; display: block; }
+        .stat-label { color: #aaa; margin-top: 10px; }
+        
+        .services { padding: 100px 0; }
+        .section-title { text-align: center; font-size: 48px; font-weight: 700; margin-bottom: 60px; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .service-card { background: #1a1a1a; padding: 40px; border-radius: 20px; border: 1px solid #333; transition: all 0.3s; }
+        .service-card:hover { border-color: #e63946; transform: translateY(-5px); }
+        .service-icon { font-size: 48px; margin-bottom: 20px; }
+        .service-title { font-size: 24px; font-weight: 700; margin-bottom: 15px; }
+        .service-desc { color: #999; }
+        
+        .lead-capture { padding: 100px 0; background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%); }
+        .lead-form { max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 60px; border-radius: 24px; border: 1px solid #333; }
+        .lead-form h3 { font-size: 32px; margin-bottom: 30px; text-align: center; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 10px; font-weight: 600; }
+        .form-group input { width: 100%; padding: 15px; background: #0a0a0a; border: 1px solid #333; border-radius: 10px; color: #fff; font-size: 16px; }
+        .form-group input:focus { outline: none; border-color: #e63946; }
+        .submit-btn { width: 100%; background: #e63946; color: #fff; padding: 18px; font-size: 18px; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; transition: transform 0.3s; }
+        .submit-btn:hover { transform: scale(1.02); }
+        
+        .contact { padding: 100px 0; text-align: center; }
+        .contact h2 { font-size: 48px; margin-bottom: 40px; }
+        .contact-info { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; margin-bottom: 40px; }
+        .contact-item { font-size: 20px; }
+        .contact-item strong { color: #e63946; display: block; margin-bottom: 10px; }
+        .social-links { display: flex; justify-content: center; gap: 30px; margin-top: 40px; }
+        .social-links a { color: #fff; font-size: 24px; text-decoration: none; padding: 15px 30px; background: #1a1a1a; border-radius: 12px; border: 1px solid #333; transition: all 0.3s; }
+        .social-links a:hover { border-color: #e63946; }
+        
+        footer { padding: 40px 0; text-align: center; border-top: 1px solid #333; color: #666; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">M&M <span>AUTO CENTER</span></div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="https://portal.ari.app/booking?FBProject=ARI&shopID=ZM83fAGtsSaZeTPLvxw3cTJLCYq1" class="cta-nav" target="_blank">Book Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional <span>Auto Repair</span> in Mississauga</h1>
+                <p>Your trusted partner for auto repair, collision services, and mobile maintenance. 25+ years of experience serving the GTA.</p>
+                <a href="https://portal.ari.app/booking?FBProject=ARI&shopID=ZM83fAGtsSaZeTPLvxw3cTJLCYq1" class="cta-button" target="_blank">Book Online - Save 10%</a>
+                <div class="offer-badge">🎁 <strong>Limited Time:</strong> 10% OFF Online Booking</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">25+</span>
+                    <p class="stat-label">Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">21</span>
+                    <p class="stat-label">Point Inspection</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <p class="stat-label">Satisfaction</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <p class="stat-label">Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3 class="service-title">Oil Change & Filter</h3>
+                    <p class="service-desc">Premium oil changes with high-quality filters. Includes 21-point inspection.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <h3 class="service-title">Tire Services</h3>
+                    <p class="service-desc">New tires, seasonal swaps, alignments, and balancing. Best prices in GTA.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">❄️</div>
+                    <h3 class="service-title">A/C Service</h3>
+                    <p class="service-desc">Complete A/C diagnostics, recharge, and repair. Stay cool with our experts.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3 class="service-title">Engine Diagnostics</h3>
+                    <p class="service-desc">Advanced OBD scanning and diagnostics. We find the problem, you get the solution.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Collision Repair</h3>
+                    <p class="service-desc">Professional body work and collision repair. All insurance companies accepted.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Mobile Service</h3>
+                    <p class="service-desc">We come to you! Mobile repair and maintenance at your location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lead-capture">
+        <div class="container">
+            <div class="lead-form">
+                <h3>Get a Free Quote</h3>
+                <form action="https://wa.me/16474480876" method="get">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" name="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="(647) 448-0876" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Car Model</label>
+                        <input type="text" placeholder="e.g., Toyota Camry 2020" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Send via WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>📞 Phone</strong>
+                    (647) 448-0876
+                </div>
+                <div class="contact-item">
+                    <strong>📍 Address</strong>
+                    1765 Shawson Dr Unit 14<br>Mississauga, ON
+                </div>
+                <div class="contact-item">
+                    <strong>💬 WhatsApp</strong>
+                    647-448-0876
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://instagram.com/mmauto_mississauga" target="_blank">📷 Instagram</a>
+                <a href="https://wa.me/16474480876" target="_blank">💬 WhatsApp</a>
+                <a href="https://portal.ari.app/booking?FBProject=ARI&shopID=ZM83fAGtsSaZeTPLvxw3cTJLCYq1" target="_blank">📅 Book Online</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 M&M Auto Center. All rights reserved. | 1765 Shawson Dr Unit 14, Mississauga, ON</p>
+        </div>
+    </footer>
+</body>
+</html>
