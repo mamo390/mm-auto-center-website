@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمة البريك المتنقلة - M&M Auto Center | Mississauga</title>
+    <meta name="description" content="فحص وإصلاح بريك متنقل في Mississauga. نأتي لمنزلك أو عملك. ضمان سنة. احجز أونلاين ووفر 15%.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #DC2626;
+            --primary-dark: #B91C1C;
+            --dark: #0F0F0F;
+            --dark-light: #1C1C1C;
+            --gray: #2A2A2A;
+            --text: #FAFAFA;
+            --text-muted: #A3A3A3;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .logo span { color: var(--primary); }
+        
+        .nav-phone {
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            background: linear-gradient(135deg, rgba(15,15,15,0.9) 0%, rgba(28,28,28,0.95) 100%),
+                        url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid var(--primary);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(40px, 6vw, 64px);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+        
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: var(--dark-light);
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 36px;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .feature-card {
+            background: var(--gray);
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: var(--dark);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .pricing-card {
+            background: var(--dark-light);
+            padding: 40px 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--primary);
+            position: relative;
+        }
+        
+        .pricing-card.featured::before {
+            content: 'الأكثر طلباً';
+            position: absolute;
+            top: -12px;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--primary);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .price {
+            font-family: var(--font-display);
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            text-align: right;
+            margin-bottom: 32px;
+        }
+        
+        .pricing-card ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+        }
+        
+        .pricing-card ul li i {
+            color: var(--primary);
+            margin-left: 8px;
+        }
+        
+        /* How it Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: var(--dark-light);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 24px;
+        }
+        
+        .step-number {
+            font-family: var(--font-display);
+            font-size: 56px;
+            color: var(--primary);
+            opacity: 0.3;
+            line-height: 1;
+        }
+        
+        .step h4 {
+            font-size: 18px;
+            margin: 16px 0 8px;
+        }
+        
+        .step p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Warning Signs */
+        .warnings {
+            padding: 80px 0;
+            background: var(--dark);
+        }
+        
+        .warning-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .warning-item {
+            background: rgba(220, 38, 38, 0.1);
+            border-right: 3px solid var(--primary);
+            padding: 20px 24px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .warning-item i {
+            font-size: 24px;
+            color: var(--primary);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(220,38,38,0.15) 0%, rgba(15,15,15,1) 100%);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: 42px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        
+        .cta-section p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 32px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        
+        footer p {
+            color: var(--text-muted);
+        }
+        
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .features-grid,
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid,
+            .pricing-grid,
+            .steps,
+            .warning-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">M&M <span>AUTO</span></a>
+            <a href="tel:6474480876" class="nav-phone">647-448-0876</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-shield-alt"></i>
+                فحص بريك مجاني يأتي لباب بيتك
+            </div>
+            <h1>خدمة البريك المتنقلة</h1>
+            <p class="hero-subtitle">
+                أمانك على الطريق يبدأ من بريك سليم. نأتي إليك في منزلك أو عملك.<br>
+                فحص مجاني + تقرير رقمي + ضمان سنة.
+            </p>
+            <a href="https://portal.ari.app/booking?FBProject=ARI&shopID=ZM83fAGtsSaZeTPLvxw3cTJLCYq1" class="cta-button" target="_blank">
+                <i class="fas fa-calendar-check"></i>
+                احجز فحص مجاني الآن - وفر 15%
+            </a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">ما يميز خدمتنا</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3>خدمة متنقلة 100%</h3>
+                    <p>نأتي لك أينما كنت في Mississauga و GTA. لا حاجة لزيارة الورشة.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>تقرير رقمي شامل</h3>
+                    <p>فحص 10 نقاط للبريك مع تقرير مصور يرسل لك على الواتساب.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>ضمان سنة كاملة</h3>
+                    <p>ضمان شامل على قطع الغيار والتركيب لمدة سنة أو 20,000 كم.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Signs -->
+    <section class="warnings">
+        <div class="container">
+            <h2 class="section-title">متى تحتاج فحص البريك؟</h2>
+            <div class="warning-grid">
+                <div class="warning-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>سماع صفير أو صرير عند الفرملة</span>
+                </div>
+                <div class="warning-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>اهتزاز في دواسة البريك</span>
+                </div>
+                <div class="warning-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>إضاءة لمبة البريك في الطبلون</span>
+                </div>
+                <div class="warning-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>تأخر في التوقف ( braking distance أطول)</span>
+                </div>
+                <div class="warning-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>سيارة تميل لجهة عند الفرملة</span>
+                </div>
+                <div class="warning-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>مرور 50,000 كم من آخر تغيير</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">الأسعار والباقات</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>الفحص المجاني</h3>
+                    <div class="price">$0 <span>مجاناً</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> فحص شامل للبريك</li>
+                        <li><i class="fas fa-check"></i> تقرير رقمي مصور</li>
+                        <li><i class="fas fa-check"></i> تقييم حالة الفرامل</li>
+                        <li><i class="fas fa-check"></i> توصية الإصلاح</li>
+                    </ul>
+                    <a href="https://portal.ari.app/booking?FBProject=ARI&shopID=ZM83fAGtsSaZeTPLvxw3cTJLCYq1" class="cta-button" style="padding: 12px 24px; font-size: 14px;" target="_blank">احجز الآن</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>تغيير Brake Pads</h3>
+                    <div class="price">$180 <span>شامل التركيب</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Pads جديدة عالية الجودة</li>
+                        <li><i class="fas fa-check"></i> تركيب في موقعك</li>
+                        <li><i class="fas fa-check"></i> ضمان سنة كاملة</li>
+                        <li><i class="fas fa-check"></i> فحص شامل بعد التركيب</li>
+                    </ul>
+                    <a href="https://portal.ari.app/booking?FBProject=ARI&shopID=ZM83fAGtsSaZeTPLvxw3cTJLCYq1" class="cta-button" style="padding: 12px 24px; font-size: 14px;" target="_blank">احجز الآن</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>تغيير كامل</h3>
+                    <div class="price">$350 <span>شامل التركيب</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Brake Pads جديدة</li>
+                        <li><i class="fas fa-check"></i> Rotors مخرشة أو جديدة</li>
+                        <li><i class="fas fa-check"></i> تغيير Brake Fluid</li>
+                        <li><i class="fas fa-check"></i> ضمان سنة شامل</li>
+                    </ul>
+                    <a href="https://portal.ari.app/booking?FBProject=ARI&shopID=ZM83fAGtsSaZeTPLvxw3cTJLCYq1" class="cta-button" style="padding: 12px 24px; font-size: 14px;" target="_blank">احجز الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">كيف تعمل الخدمة</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>احجز موعد</h4>
+                    <p>اختر الوقت والمكان المناسب لك أونلاين أو بالاتصال</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>نأتي إليك</h4>
+                    <p>الفني يصل في الوقت المحدد مع جميع المعدات</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>الفحص والتصليح</h4>
+                    <p>فحص شامل وإصلاح في نفس الموقع (70% من الحالات)</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>الدفع والضمان</h4>
+                    <p>ادفع نقداً أو بالبطاقة واحصل على ضمان سنة كاملة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>لا تنتظر حتى يفوت الأوان!</h2>
+            <p>فحص البريك المجاني يأتي لباب بيتك. احجز الآن ووفر 15% على أي إصلاح.</p>
+            <a href="https://portal.ari.app/booking?FBProject=ARI&shopID=ZM83fAGtsSaZeTPLvxw3cTJLCYq1" class="cta-button" target="_blank">
+                <i class="fas fa-calendar-check"></i>
+                احجز فحص مجاني الآن
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>M&M Auto Center | 1765 Shawson Dr Unit 14, Mississauga | 647-448-0876</p>
+        </div>
+    </footer>
+</body>
+</html>
