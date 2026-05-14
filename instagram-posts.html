@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Posts - M&M Auto Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #1a1a1a;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .post {
+            width: 1080px;
+            height: 1080px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        /* Post 1: Brake Service */
+        .post-brake {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1c1c1c 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+        }
+        
+        .post-brake .icon-circle {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.4);
+        }
+        
+        .post-brake h1 {
+            font-size: 72px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .post-brake .subtitle {
+            font-size: 36px;
+            color: #DC2626;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        .post-brake .features {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .post-brake .feature {
+            background: rgba(255,255,255,0.05);
+            padding: 20px 30px;
+            border-radius: 12px;
+            font-size: 24px;
+            color: #fff;
+        }
+        
+        .post-brake .cta {
+            background: #DC2626;
+            color: #fff;
+            padding: 25px 60px;
+            border-radius: 12px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .post-brake .phone {
+            position: absolute;
+            bottom: 40px;
+            font-size: 28px;
+            color: #888;
+        }
+        
+        /* Post 2: Battery Service */
+        .post-battery {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+            position: relative;
+        }
+        
+        .post-battery .bolt {
+            position: absolute;
+            font-size: 400px;
+            opacity: 0.05;
+            color: #DC2626;
+        }
+        
+        .post-battery .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .post-battery h1 {
+            font-size: 80px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .post-battery .highlight {
+            color: #DC2626;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        
+        .post-battery .price-box {
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            padding: 40px 80px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .post-battery .price-box .starting {
+            font-size: 28px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .post-battery .price-box .price {
+            font-size: 96px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+        }
+        
+        .post-battery .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .post-battery .feature-item {
+            font-size: 28px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .post-battery .feature-item::before {
+            content: '✓';
+            color: #DC2626;
+            font-weight: 900;
+            font-size: 32px;
+        }
+        
+        /* Post 3: Emergency Service */
+        .post-emergency {
+            background: #0f0f0f;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+        
+        .post-emergency .top {
+            background: #DC2626;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .post-emergency .top h1 {
+            font-size: 64px;
+            font-weight: 900;
+            color: #fff;
+        }
+        
+        .post-emergency .top p {
+            font-size: 32px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .post-emergency .bottom {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            text-align: center;
+        }
+        
+        .post-emergency .services {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .post-emergency .service {
+            background: rgba(220, 38, 38, 0.1);
+            border: 2px solid #DC2626;
+            padding: 40px;
+            border-radius: 20px;
+            width: 280px;
+        }
+        
+        .post-emergency .service .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .post-emergency .service h3 {
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .post-emergency .service p {
+            font-size: 20px;
+            color: #888;
+        }
+        
+        .post-emergency .phone-big {
+            font-size: 56px;
+            font-weight: 900;
+            color: #DC2626;
+        }
+        
+        /* Print instructions */
+        .instructions {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 12px;
+            color: #fff;
+            max-width: 1080px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .instructions h3 {
+            color: #DC2626;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Post 1: Brake Service -->
+    <div class="post post-brake">
+        <div class="icon-circle">🛑</div>
+        <h1>فحص بريك مجاني<br>يأتي لباب بيتك!</h1>
+        <div class="subtitle">خصم 15% على الإصلاح</div>
+        <div class="features">
+            <div class="feature">✓ فحص شامل</div>
+            <div class="feature">✓ ضمان سنة</div>
+            <div class="feature">✓ تقرير رقمي</div>
+        </div>
+        <div class="cta">احجز موعدك الآن</div>
+        <div class="phone">📞 647-448-0876</div>
+    </div>
+
+    <!-- Post 2: Battery Service -->
+    <div class="post post-battery">
+        <div class="bolt">⚡</div>
+        <div class="content">
+            <h1>البطارية خلاصت؟</h1>
+            <div class="highlight">نصل إليك في 30 دقيقة!</div>
+            <div class="price-box">
+                <div class="starting">ابتداءً من</div>
+                <div class="price">$120</div>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">تركيب في موقعك</div>
+                <div class="feature-item">ضمان سنة كاملة</div>
+                <div class="feature-item">أفضل الأسعار في GTA</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 3: Emergency Service -->
+    <div class="post post-emergency">
+        <div class="top">
+            <h1>🆘 خدمة الطوارئ 24/7</h1>
+            <p>عالق في الطريق؟ نحن معك!</p>
+        </div>
+        <div class="bottom">
+            <div class="services">
+                <div class="service">
+                    <div class="icon">🛑</div>
+                    <h3>بريك</h3>
+                    <p>فجائي</p>
+                </div>
+                <div class="service">
+                    <div class="icon">🔋</div>
+                    <h3>بطارية</h3>
+                    <p>ناشفة</p>
+                </div>
+            </div>
+            <div class="phone-big">647-448-0876</div>
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions">
+        <h3>📸 كيفية حفظ الصور:</h3>
+        <p>1. افتح هذا الملف في المتصفح (Chrome)</p>
+        <p>2. اضغط F12 (Developer Tools)</p>
+        <p>3. اضغط Ctrl+Shift+P → اكتب "screenshot"</p>
+        <p>4. اختر "Capture node screenshot"</p>
+        <p>5. انقر على العنصر الذي تريد تصويره</p>
+        <p>6. الصورة ستحفظ تلقائياً</p>
+        <p><strong>أو استخدم:</strong> امتداد "GoFullPage" على Chrome</p>
+    </div>
+</body>
+</html>
