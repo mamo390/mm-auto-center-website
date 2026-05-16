@@ -1,0 +1,25 @@
+Financial Tracker Template - Create manually in Excel or Google Sheets
+
+SHEET 1: BILLS & RENT
+| Due Date | Category | Vendor | Description | Amount | Status | Paid Date | Notes |
+|----------|----------|--------|-------------|--------|--------|-----------|-------|
+| 2026-06-01 | Rent | Landlord | Shop Rent | $2,500 | Pending | - | Unit 14 |
+| 2026-06-15 | Utilities | Hydro | Electricity | $400 | Pending | - | Monthly |
+| 2026-06-20 | Insurance | Insurance Co | Shop Insurance | $300 | Paid | 2026-05-25 | Annual |
+
+SHEET 2: DEBTS & LOANS
+| Creditor | Original Amount | Remaining | Interest Rate | Min Payment | Due Date | Status |
+|----------|-----------------|-----------|---------------|-------------|----------|--------|
+| Bank Loan | $50,000 | $35,000 | 5% | $800 | 15th | Active |
+| Equipment Finance | $20,000 | $12,000 | 6% | $350 | 1st | Active |
+
+SHEET 3: INCOMING PAYMENTS
+| Client | Service | Invoice Date | Due Date | Amount | Status | Paid Date |
+|--------|---------|--------------|----------|--------|--------|-----------|
+| ABC Company | Brake Service | 2026-05-01 | 2026-06-01 | $450 | Pending | - |
+| John Smith | Oil Change | 2026-05-10 | 2026-05-24 | $80 | Paid | 2026-05-12 |
+
+SHEET 4: CASH FLOW SUMMARY
+| Month | Income | Expenses | Net | Outstanding Receivables | Outstanding Payables |
+|-------|--------|----------|-----|------------------------|---------------------|
+| May 2026 | $15,000 | $8,500 | $6,500 | $2,400 | $3,200 |
