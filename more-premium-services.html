@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات حصرية - M&M Auto Center | Mississauga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        .services {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: #1c1c1c;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            border-color: #DC2626;
+            transform: translateY(-5px);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #DC2626;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .badge.gold {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+        }
+        
+        .badge.platinum {
+            background: linear-gradient(135deg, #E5E4E2 0%, #C0C0C0 100%);
+            color: #000;
+        }
+        
+        .service-card h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .service-card .price {
+            font-size: 48px;
+            font-weight: 900;
+            color: #DC2626;
+            margin: 20px 0;
+        }
+        
+        .service-card .price span {
+            font-size: 18px;
+            color: #888;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: #DC2626;
+            font-weight: 900;
+            font-size: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #DC2626;
+            color: #fff;
+            padding: 18px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #B91C1C;
+            transform: scale(1.05);
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .mini-card {
+            background: #1c1c1c;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+        
+        .mini-card h3 {
+            color: #DC2626;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .mini-card .price-small {
+            font-size: 32px;
+            font-weight: 900;
+            margin: 15px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #1c1c1c 0%, #2a1a1a 100%);
+            border: 2px solid #DC2626;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .highlight-box h3 {
+            color: #DC2626;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>خدمات M&M الحصرية</h1>
+        <p>خدمات فريدة لا يقدمها أحد في Mississauga!</p>
+    </div>
+    
+    <div class="services">
+        
+        <!-- 1. Concierge Service -->
+        <div class="service-card">
+            <span class="badge platinum">VIP خدمة</span>
+            <h2>🚗 M&M Car Concierge</h2>
+            <p>نحن نعتني بسيارتك وأنت مرتاح</p>
+            <div class="price">$199 <span>/شهر</span></div>
+            <ul class="features">
+                <li>استلام السيارة من منزلك</li>
+                <li>صيانة دورية شاملة</li>
+                <li>غسيل وتنظيف داخلي أسبوعي</li>
+                <li>تعبئة بنزين (تكلفة البنزين عليك)</li>
+                <li>تصليح أي عطل فوراً</li>
+                <li>تسليم السيارة لباب بيتك نظيفة</li>
+                <li>تقرير شهري عن حالة السيارة</li>
+            </ul>
+            <div class="highlight-box">
+                <h3>💡 مثالي لـ:</h3>
+                <p>رجال الأعمال المشغولين - الأمهات العاملات - كبار السن</p>
+            </div>
+            <a href="tel:6474480876" class="cta-button">اشترك في الخدمة VIP</a>
+        </div>
+        
+        <!-- 2. Pre-Purchase Inspection -->
+        <div class="service-card">
+            <span class="badge gold">موثوقية</span>
+            <h2>🔍 فحص ما قبل الشراء</h2>
+            <p>لا تشتري سيارة مستعملة قبل ما نفحصها!</p>
+            <div class="price">$150 <span>للفحص الواحد</span></div>
+            <ul class="features">
+                <li>فحص شامل 75 نقطة</li>
+                <li>تقرير رقمي مصور</li>
+                <li>فحص الكمبيوتر (OBD)</li>
+                <li>تقييم سعر السيارة</li>
+                <li>تقرير الحوادث والصدمات</li>
+                <li>اختبار قيادة مع الفني</li>
+                <li>استشارة: اشتري ولا لا؟</li>
+            </ul>
+            <div class="highlight-box">
+                <h3>💡 لماذا مميز؟</h3>
+                <p>نذهب معك للبائع - نفحص في مكانه - نوفر لك آلاف الدولارات من الصفقات السيئة!</p>
+            </div>
+            <a href="tel:6474480876" class="cta-button">احجز فحص قبل الشراء</a>
+        </div>
+        
+        <!-- 3. Winterization Package -->
+        <div class="service-card">
+            <span class="badge">موسمي</span>
+            <h2>❄️ باقة التجهيز للشتاء الكندي</h2>
+            <p>استعد للشتاء قبل ما يجي</p>
+            <div class="price">$249 <span>باقة كاملة</span></div>
+            <ul class="features">
+                <li>فحص نظام التدفئة</li>
+                <li>فحص البطارية (الشتاء يقتلها)</li>
+                <li>تغيير لمبات الإضاءة</li>
+                <li>تعبئة سائل مساحات -30°</li>
+                <li>فحص الإطارات + ضغط الهواء</li>
+                <li>تجهيز Emergency Kit في السيارة</li>
+                <li>نصائح قيادة آمنة في الثلج</li>
+            </ul>
+            <a href="tel:6474480876" class="cta-button">جهز سيارتك للشتاء</a>
+        </div>
+        
+        <!-- 4. Mobile Detailing -->
+        <div class="service-card">
+            <span class="badge">تجميل</span>
+            <h2>✨ تلميع متنقل - M&M Mobile Detailing</h2>
+            <p>سيارتك جديدة دون ما تترك البيت</p>
+            <div class="price">$79 <span>ابتداءً من</span></div>
+            <ul class="features">
+                <li>غسيل خارجي متنقل</li>
+                <li>تنظيف داخلي شامل</li>
+                <li>تلميع لوحة القيادة</li>
+                <li>تنظيف المقاعد (بخار)</li>
+                <li>إزالة الروائح</li>
+                <li>تلميع الإطارات</li>
+            </ul>
+            <div class="grid-3">
+                <div class="mini-card">
+                    <h3>باقة أساسية</h3>
+                    <div class="price-small">$79</div>
+                    <p>غسيل + تنظيف داخلي</p>
+                </div>
+                <div class="mini-card">
+                    <h3>باقة كاملة</h3>
+                    <div class="price-small">$149</div>
+                    <p>+ تلميع كامل</p>
+                </div>
+                <div class="mini-card">
+                    <h3>باقة VIP</h3>
+                    <div class="price-small">$249</div>
+                    <p>+ حماية سيراميك</p>
+                </div>
+            </div>
+            <a href="tel:6474480876" class="cta-button">احجز تلميع متنقل</a>
+        </div>
+        
+        <!-- 5. Roadside Assistance Membership -->
+        <div class="service-card">
+            <span class="badge">طوارئ</span>
+            <h2>🆘 عضوية الإنقاذ الطريقي السنوية</h2>
+            <p>اطمئن - نحن معك أينما كنت</p>
+            <div class="price">$89 <span>/سنة</span></div>
+            <ul class="features">
+                <li>سحب مجاني ( towing) لـ 50km</li>
+                <li>Jump start للبطارية</li>
+                <li>تغيير إطار العجلة الاحتياطية</li>
+                <li>إيصال بنزين (تكلفة الوقود عليك)</li>
+                <li>فتح الأبواب المقفلة</li>
+                <li>خدمة 24/7/365</li>
+                <li>لا حدود للاستخدام!</li>
+            </ul>
+            <div class="highlight-box">
+                <h3>💡 لماذا أفضل من CAA؟</h3>
+                <p>أسرع وصول - أرخص - محلي ونعرف شوارع Mississauga</p>
+            </div>
+            <a href="tel:6474480876" class="cta-button">انضم للعضوية - $89/سنة</a>
+        </div>
+        
+        <!-- 6. Student & Senior Discounts -->
+        <div class="service-card">
+            <span class="badge">مجتمعي</span>
+            <h2>🎓 خصومات الطلاب وكبار السن</h2>
+            <p>نقدر شريحة المجتمع</p>
+            <div class="price" style="font-size: 36px;">خصم 15%</div>
+            <ul class="features">
+                <li>طلاب الجامعات (مع بطاقة طالب)</li>
+                <li>كبار السن 65+ (مع ID)</li>
+                <li>عائلات منخفضة الدخل</li>
+                <li>يشمل جميع الخدمات</li>
+                <li>يمكن الجمع مع العروض الأخرى</li>
+            </ul>
+            <div class="highlight-box">
+                <h3>💡 الفائدة لك:</h3>
+                <p>ولاء العملاء + سمعة طيبة + زيادة التداول (word of mouth)</p>
+            </div>
+            <a href="tel:6474480876" class="cta-button">استفد من الخصم</a>
+        </div>
+        
+        <!-- 7. Referral Program -->
+        <div class="service-card">
+            <span class="badge gold">تسويق</span>
+            <h2>🎁 برنامج الإحالة - اربح معنا!</h2>
+            <p>أحضر صديقك واربح</p>
+            <div class="price" style="font-size: 36px;">$25 لكل إحالة</div>
+            <ul class="features">
+                <li>أحضر صديق يعمل خدمة بـ $100+</li>
+                <li>احصل على $25 رصيد أو كاش</li>
+                <li>لا حدود للإحالات!</li>
+                <li>صديقك يحصل على خصم 10%</li>
+                <li>تتبع الإحالات أونلاين</li>
+            </ul>
+            <div class="highlight-box">
+                <h3>💡 الحساب:</h3>
+                <p>10 إحالات/شهر = $250 إضافي + عملاء جدد!</p>
+            </div>
+            <a href="tel:6474480876" class="cta-button">انضم لبرنامج الإحالة</a>
+        </div>
+        
+        <!-- 8. Emergency Kit Sales -->
+        <div class="service-card">
+            <span class="badge">منتجات</span>
+            <h2>🎒 حقائب الطوارئ للسيارة</h2>
+            <p>مستعد لأي طارئ</p>
+            <div class="price">$49 <span>فقط</span></div>
+            <ul class="features">
+                <li>كابلات jump start</li>
+                <li>إطار علاج مؤقت (sealant)</li>
+                <li>مضخة هواء يدوية</li>
+                <li>مصباح يدوي + بطاريات</li>
+                <li>سترة عاكسة</li>
+                <li>لافتة طوارئ مثلثة</li>
+                <li>قفازات ومناديل</li>
+                <li>علبة إسعافات أولية صغيرة</li>
+            </ul>
+            <div class="highlight-box">
+                <h3>💡 الربح:</h3>
+                <p>سعر التكلفة: $15 | سعر البيع: $49 | الربح: $34 (226%!)</p>
+            </div>
+            <a href="tel:6474480876" class="cta-button">اشتري حقيبة الطوارئ</a>
+        </div>
+        
+    </div>
+</body>
+</html>
