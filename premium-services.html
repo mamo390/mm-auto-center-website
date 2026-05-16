@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات مميزة - M&M Auto Center | Mississauga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        .services {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: #1c1c1c;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            border-color: #DC2626;
+            transform: translateY(-5px);
+        }
+        
+        .service-card.featured {
+            border-color: #DC2626;
+            background: linear-gradient(135deg, #1c1c1c 0%, #2a1a1a 100%);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #DC2626;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .service-card .price {
+            font-size: 48px;
+            font-weight: 900;
+            color: #DC2626;
+            margin: 20px 0;
+        }
+        
+        .service-card .price span {
+            font-size: 18px;
+            color: #888;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: #DC2626;
+            font-weight: 900;
+            font-size: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #DC2626;
+            color: #fff;
+            padding: 18px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #B91C1C;
+            transform: scale(1.05);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .express-card {
+            background: #1c1c1c;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        
+        .express-card h3 {
+            color: #DC2626;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .express-card .time {
+            font-size: 36px;
+            font-weight: 900;
+        }
+        
+        .express-card .price-small {
+            font-size: 28px;
+            color: #DC2626;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>خدمات M&M المميزة</h1>
+        <p>تميز عن المنافسين وزود دخلك مع خدمات حصرية!</p>
+    </div>
+    
+    <div class="services">
+        <!-- Subscription Plan -->
+        <div class="service-card featured">
+            <span class="badge">الأكثر مبيعاً</span>
+            <h2>🌟 اشتراك M&M Care Plan</h2>
+            <p>صيانة دورية شاملة بدون قلق</p>
+            <div class="price">$99 <span>/شهر</span></div>
+            <ul class="features">
+                <li>زيت + فلتر كل 3 أشهر</li>
+                <li>فحص 21 نقطة مجاناً</li>
+                <li>خصم 20% على جميع الإصلاحات</li>
+                <li>أولوية الحجز</li>
+                <li>فحص بريك سنوي مجاني</li>
+                <li>دعم فني 24/7</li>
+            </ul>
+            <a href="tel:6474480876" class="cta-button">اشترك الآن - 647-448-0876</a>
+        </div>
+        
+        <!-- Express Services -->
+        <h2 style="text-align: center; margin: 60px 0 30px; font-size: 32px;">⚡ خدمة Express (خلال ساعتين)</h2>
+        <div class="grid">
+            <div class="express-card">
+                <h3>🔋 بطارية</h3>
+                <div class="time">30 دقيقة</div>
+                <div class="price-small">$120</div>
+                <p>تركيب في موقعك + ضمان سنة</p>
+            </div>
+            <div class="express-card">
+                <h3>🛑 بريك</h3>
+                <div class="time">2 ساعة</div>
+                <div class="price-small">$180</div>
+                <p>تغيير كامل + فحص شامل</p>
+            </div>
+            <div class="express-card">
+                <h3>🛞 إطار</h3>
+                <div class="time">45 دقيقة</div>
+                <div class="price-small">$40</div>
+                <p>تغيير + توازن</p>
+            </div>
+            <div class="express-card">
+                <h3>❄️ تكييف</h3>
+                <div class="time">1 ساعة</div>
+                <div class="price-small">$80</div>
+                <p>تعبئة غاز + فحص</p>
+            </div>
+        </div>
+        
+        <!-- After Hours -->
+        <div class="service-card" style="margin-top: 40px;">
+            <span class="badge">خدمة جديدة</span>
+            <h2>🌙 خدمة المساء M&M After Hours</h2>
+            <p>للعملاء المشغولين - أوقات مرنة</p>
+            <div class="price" style="font-size: 36px;">+30% <span>على الأسعار العادية</span></div>
+            <ul class="features">
+                <li>الأحد - الخميس: 6PM - 10PM</li>
+                <li>السبت: 10AM - 6PM</li>
+                <li>نفس جودة الخدمة</li>
+                <li>لا حاجة لإجازة من العمل</li>
+            </ul>
+            <a href="tel:6474480876" class="cta-button">احجز موعد مسائي</a>
+        </div>
+        
+        <!-- Extended Warranty -->
+        <div class="service-card">
+            <span class="badge">حماية شاملة</span>
+            <h2>🛡️ الضمان الممتد M&M Protection</h2>
+            <p>اطمئن - نغطي كل شيء</p>
+            <div class="price">$299 <span>/سنة</span></div>
+            <ul class="features">
+                <li>جميع الإصلاحات تحت $500 مجاناً</li>
+                <li>سحب مجاني (Towing)</li>
+                <li>بديل سيارة لـ 3 أيام</li>
+                <li>خصم 50% على قطع الغيار</li>
+                <li>دعم طوارئ 24/7</li>
+            </ul>
+            <a href="tel:6474480876" class="cta-button">فعّل الحماية الآن</a>
+        </div>
+        
+        <!-- Fleet Services -->
+        <div class="service-card">
+            <span class="badge">B2B</span>
+            <h2>🚗 إدارة أساطيل الشركات</h2>
+            <p>حلول متكاملة لشركات التوصيل والإيجار</p>
+            <div class="price" style="font-size: 36px;">عقود سنوية</div>
+            <ul class="features">
+                <li>صيانة دورية لجميع المركبات</li>
+                <li>تقارير شهرية مفصلة</li>
+                <li>خصومات تصل لـ 30%</li>
+                <li>فوترة موحدة</li>
+                <li>أولوية الخدمة</li>
+            </ul>
+            <a href="tel:6474480876" class="cta-button">اطلب عرض أسعار</a>
+        </div>
+    </div>
+</body>
+</html>
