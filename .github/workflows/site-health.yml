@@ -1,0 +1,75 @@
+name: Site health check
+
+# Weekly audit of the live site: every page, every link, every image,
+# plus a guard against credentials ever landing in this public repository.
+# Runs itself - no subscription, no server, no action needed from the owner.
+
+on:
+  schedule:
+    # Sundays 13:00 UTC = 09:00 America/Toronto (EDT)
+    - cron: '0 13 * * 0'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: site-health
+  cancel-in-progress: false
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run health check against the live site
+        id: health
+        continue-on-error: true
+        env:
+          SITE_BASE: https://mamo390.github.io/mm-auto-center-website/
+        run: python3 tools/site_health.py
+
+      - name: Open or update an alert issue when something is broken
+        if: steps.health.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          TITLE: 'Site health check failed'
+        run: |
+          set -e
+          {
+            echo "The weekly site audit found broken items - see the full log: $RUN_URL"
+            echo
+            echo "Last run: $(date -u '+%Y-%m-%d %H:%M UTC')"
+            echo
+            echo '```'
+            python3 tools/site_health.py 2>&1 | tail -n 60 || true
+            echo '```'
+          } > /tmp/body.md
+          num=$(gh issue list --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body-file /tmp/body.md
+          else
+            gh issue create --title "$TITLE" --body-file /tmp/body.md
+          fi
+
+      - name: Close the alert issue when the site is healthy again
+        if: steps.health.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: 'Site health check failed'
+        run: |
+          set -e
+          num=$(gh issue list --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "Green again on $(date -u '+%Y-%m-%d %H:%M UTC') - every page, link and asset answered correctly. Closing."
+            gh issue close "$num"
+          fi
+
+      - name: Fail the run if anything was broken
+        if: steps.health.outcome == 'failure'
+        run: exit 1
