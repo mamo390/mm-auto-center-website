@@ -5,6 +5,9 @@ name: Site health check
 # Runs itself - no subscription, no server, no action needed from the owner.
 
 on:
+  # audit right after every publish to the live branch
+  push:
+    branches: [main, ci/site-health]
   schedule:
     # Sundays 13:00 UTC = 09:00 America/Toronto (EDT)
     - cron: '0 13 * * 0'
