@@ -17,6 +17,7 @@ Optional env: SITE_BASE (default the live Pages URL), LOCAL_DIR (repo root).
 from __future__ import annotations
 
 import concurrent.futures
+import base64
 import html.parser
 import os
 import pathlib
@@ -127,9 +128,33 @@ def check_retired() -> None:
 
 
 SECRET_PATTERNS = [
-    ("n8n api key id:secret", re.compile(r"\b[A-Za-z0-9]{16,}:[A-Za-z0-9+/=_-]{32,}\b")),
-    ("generic bearer/token assignment", re.compile(r"(?i)(api[_-]?key|auth[_-]?token|secret)\s*[:=]\s*['\"][A-Za-z0-9+/=_-]{24,}['\"]")),
+    ("plain id:secret credential", re.compile(r"\b[A-Za-z0-9]{16,}:[A-Za-z0-9+/=_-]{32,}\b")),
+    ("key/token assignment", re.compile(r"(?i)(api[_-]?key|auth[_-]?token|access[_-]?token|secret|password)\s*[:=]\s*['\"][A-Za-z0-9+/=_-]{24,}['\"]")),
+    ("key/token in a code span", re.compile(r"(?i)(auth[_-]?token|api[_-]?key|secret|password)[^\n]{0,20}`\s*([A-Za-z0-9+/=_-]{24,})\s*`")),
 ]
+
+# base64 blob that decodes to "<id>:<secret>" - the shape n8n, Zapier MCP and
+# most webhook providers hand out.
+B64_BLOB = re.compile(r"(?<![A-Za-z0-9+/=])([A-Za-z0-9+/]{40,}={0,2})(?![A-Za-z0-9+/=])")
+DECODED_CREDENTIAL = re.compile(r"[A-Za-z0-9_-]{8,}:[A-Za-z0-9+/=_-]{16,}")
+
+
+def looks_like_encoded_credential(blob: str) -> str | None:
+    padded = blob + "=" * (-len(blob) % 4)
+    try:
+        raw = base64.b64decode(padded, validate=True)
+    except Exception:
+        return None
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError:
+        return None
+    if not all(32 <= ord(c) < 127 or c in "\r\n\t" for c in text):
+        return None
+    m = DECODED_CREDENTIAL.search(text)
+    if m and len(text) < 400:
+        return m.group(0)
+    return None
 
 
 def check_secrets() -> None:
@@ -143,12 +168,17 @@ def check_secrets() -> None:
             text = f.read_text(errors="ignore")
         except Exception:
             continue
-        if "example" in text.lower() and f.name.upper().startswith("EXAMPLE"):
-            continue
+        rel = f.relative_to(LOCAL_DIR)
         for label, rx in SECRET_PATTERNS:
             m = rx.search(text)
             if m:
-                failures.append(f"possible credential in {f.relative_to(LOCAL_DIR)} ({label}): {m.group(0)[:12]}…")
+                failures.append(f"possible credential in {rel} ({label}): {m.group(0)[:12]}…")
+        for blob in B64_BLOB.findall(text):
+            decoded = looks_like_encoded_credential(blob)
+            if decoded:
+                failures.append(
+                    f"possible credential in {rel} (base64-encoded, decodes to): {decoded[:12]}…"
+                )
 
 
 def main() -> int:
